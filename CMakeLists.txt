@@ -4,10 +4,6 @@ project(mybot)
 # Add compiler warnings
 set(COMPILER_WARNINGS "-W -Wall -Wextra -Wno-unused-parameter -Wno-comment")
 
-if(NOT SOURCES)
-    message(FATAL_ERROR "Cannot find sources! Aborting...")
-endif()
-
 # Optimizations
 if(NATIVE STREQUAL "no" OR NOT NATIVE)
     set(NATIVE "")
@@ -32,6 +28,6 @@ endif()
 
 add_subdirectory(opt/cppgram)
 
-add_executable(mybot SOURCES)
+add_executable(mybot mybot.cpp)
 target_link_libraries(mybot ${CPPGRAM_LIBRARIES})
 include_directories(${CPPGRAM_INCLUDE})
